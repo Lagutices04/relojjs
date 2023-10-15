@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .reloj {
+            font-size: 80px;
+            color: #fff;
+            text-align: center;
+            -webkit-animation: reloj 1s ease-in-out infinite alternate;
+            -moz-animation: reloj 1s ease-in-out infinite alternate;
+            animation: reloj 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes reloj {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reloj glow">2:00:00</div>
+    <script>
+        setInterval(() => {
+            //set interval significa que ell codigo se repetira cada cierto periodo de tiempo
+            // Seleccionar el elemento con la clase "reloj"
+            var relojElemento = document.querySelector(".reloj");
+            // el query selector significa que se selecciona un elemento del html usando el selector css y devolvera el primer elemento que coincida con ese selector especifico, en este caso el query selectpr seleccionara el primer elemento del div con la clase reloj y se almacenara en la varibale relojelemento 
+            var tiempoActual = new Date();
+            var hora = tiempoActual.getHours().toString().padStart(2, '0'); // Asegura que siempre tenga 2 dígitos
+            var minutos = tiempoActual.getMinutes().toString().padStart(2, '0');
+            var segundos = tiempoActual.getSeconds().toString().padStart(2, '0');
+// padStart(2, '0') asegura que los segundos sean al menos de dos dígitos y, si no lo son, se le agrega un '0' al inicio.
+            relojElemento.innerHTML = `${hora}:${minutos}:${segundos}`;
+            //es una impresion de js 
+        }, 1000);
+        // ese 1000 significa que correra cada segundo 
+    </script>
+</body>
+
+</html>
+
